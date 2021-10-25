@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
-
-export class Music { //オブジェクト中のプロパティの型付け
-  'genre': string;
-  'bpm': number;
-  'country': string;
-};
+import { Component, OnInit } from '@angular/core';
+import { Music } from './music';
+import { SongsService } from './songs.service'
 
 //app.component.tsに部品として差し込むコンポーネントを定義してある。
 
@@ -13,16 +9,11 @@ export class Music { //オブジェクト中のプロパティの型付け
 
 // データバインディング : コンポーネントにおいてテンプレートとクラス内の要素を繋ぐ仕組み
 
-const SONGS: Music[] = [
- { genre : 'techno', bpm : 89, country : 'USA'},
- { genre : 'reggae', bpm : 89, country : 'Jamaica'},
- { genre : 'Cumbia', bpm : 89, country : 'Columbia'}
-];
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [SongsService]
 })
 
 export class AppComponent {　
@@ -31,12 +22,25 @@ export class AppComponent {　
   title: string = 'Angular-training';　
   company: string = 'MonstarLab';
   num: number = 150;
-  songs = SONGS;
 
-  song: Music = this.songs[0];
-  // {
-  //   genre : 'hiphop',
-  //   bpm : 89,
-  //   country : 'Japan'
-  // };
+  songs!: Music[];
+  selectSong!: Music; //= this.songs[0];
+
+  constructor(private songsService: SongsService) {}
+
+  // :void = リターンがないという戻り値の型指定
+  onSelect(song: Music): void {
+    this.selectSong = song;
+    console.log(this.selectSong);
+  }
+
+  getSongs(): void {
+    this.songsService.getSongs()
+    .then((songs: Music[]) => {this.songs = songs});
+  }
+
+  //一番最初に実行したいメソッドはOnInitをインポートし、ngOnInitの中で定義する。
+  ngOnInit(): void {
+    this.getSongs();
+  }
 }

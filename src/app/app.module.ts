@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MusicDetailComponent} from './music-detail.component'
 
 //app.module.tsにアプリケーションの設定が書かれている。
 //コンポーネントを実際のアプリケーションにまとめる。
 
 @NgModule({
   declarations: [
-    AppComponent //AppComponentを使いますという宣言
+    AppComponent, //AppComponentを使いますという宣言
+    MusicDetailComponent
   ],
   imports: [
     BrowserModule, //ブラウザで動かすためのモジュールをインポート
