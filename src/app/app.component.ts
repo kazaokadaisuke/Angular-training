@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Music } from './music';
-import { SongsService } from './songs.service'
+import { Component } from '@angular/core';
+import { SongsComponent } from './songs.component';
 
 //app.component.tsに部品として差し込むコンポーネントを定義してある。
 
@@ -12,35 +11,12 @@ import { SongsService } from './songs.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [SongsService]
 })
 
 export class AppComponent {　
-  // ↓AppComponentのプロパティ
-
   title: string = 'Angular-training';　
   company: string = 'MonstarLab';
   num: number = 150;
 
-  songs!: Music[];
-  selectSong!: Music; //= this.songs[0];
-
-  constructor(private songsService: SongsService) {}
-
-  // :void = リターンがないという戻り値の型指定
-  onSelect(song: Music): void {
-    this.selectSong = song;
-    console.log(this.selectSong);
-  }
-
-  getSongs(): void {
-    this.songsService.getSongs()
-    .then((songs: Music[]) => {this.songs = songs});
-  }
-
-  //一番最初に実行したいメソッドはOnInitをインポートし、ngOnInitの中で定義する。
-  ngOnInit(): void {
-    this.getSongs();
-  }
+  constructor(private SongsComponent: SongsComponent) {}
 }
