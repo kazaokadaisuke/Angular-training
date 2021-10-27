@@ -16,12 +16,13 @@
   </ul>
 
   <h2>選択されたMusic</h2>
+  <!-- <div *ngif="selectSong"> -->
   <div>
     <h2>
       Music : {{selectSong?.genre}}
     </h2>
     <button (click)="gotoDetail()">詳細を見る</button>
   </div>
-
+  
   <!-- <music-detail [song]="selectSong"></music-detail> -->
   <router-outlet></router-outlet>
