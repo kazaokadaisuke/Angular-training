@@ -9,4 +9,9 @@ export class SongsService {
   getSongs(): Promise<Music[]> {
     return Promise.resolve(SONGS);
   }
+
+  getSong(id: number): Promise<Music | undefined> {
+    return this.getSongs()
+    .then((songs: Music[]) => songs.find((song: Music) => song.id === id));
+  }
 }

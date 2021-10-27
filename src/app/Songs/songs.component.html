@@ -3,6 +3,7 @@
     <!--リスト表示するためにディレクティブ ngFor を加える-->
     <!-- プロパティsongsから一件一件要素を取り出してli表示される -->
     <!-- クラスを動的に設定するクラスバインディング。=の後に条件式を書く-->
+    <h2>Music List</h2>
 
     <li *ngFor="let song of songs"
     [class.selected]="song === selectSong"
@@ -15,15 +16,12 @@
   </ul>
 
   <h2>選択されたMusic</h2>
-  <music-detail [song]="selectSong"></music-detail>
-
-   <!-- ngIfを使うとその条件にあった時だけdiv内を表示することができる -->
-
-  <div *ngIf="selectSong">
-    <h1>{{ selectSong.country }}</h1>
-    <input [(ngModel)]="selectSong.bpm" placeholder="text" class="genre-input">
-    <h1>{{ selectSong.genre }}</h1>
-    <br>
+  <div>
+    <h2>
+      Music : {{selectSong?.genre}}
+    </h2>
+    <button (click)="gotoDetail()">詳細を見る</button>
   </div>
 
+  <!-- <music-detail [song]="selectSong"></music-detail> -->
   <router-outlet></router-outlet>

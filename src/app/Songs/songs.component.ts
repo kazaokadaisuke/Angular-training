@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { Music } from './music';
-import { SongsService } from './songs.service'
+import { SongsService } from './songs.service';
 
 @Component({
   selector: 'mysongs',
   templateUrl: './songs.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['../app.component.css'],
   // providers: [SongsService]
 })
-
 
 // implements OnInit : インターフェースを実装する、という宣言
 
@@ -20,7 +20,10 @@ export class SongsComponent implements OnInit{
   songs?: Music[];
   selectSong?: Music;
 
-  constructor(private songsService: SongsService) {}
+  constructor(
+    private router: Router,
+    private songsService: SongsService
+  ) {}
 
   onSelect(song: Music): void {
     this.selectSong = song;
@@ -34,5 +37,9 @@ export class SongsComponent implements OnInit{
 
   ngOnInit(): void {
     this.getSongs();
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectSong?.id]);
   }
 }

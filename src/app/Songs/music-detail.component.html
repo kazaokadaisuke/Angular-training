@@ -1,0 +1,8 @@
+  <!-- ngIfを使うとその条件にあった時だけdiv内を表示することができる -->
+<div *ngIf="song">
+  <h1>{{ song.country }}</h1>
+  <input [(ngModel)]="song.bpm" placeholder="text" class="genre-input">
+  <h1>{{ song.genre }}</h1>
+  <br>
+  <button (click)="goBack()">戻る</button>
+</div>

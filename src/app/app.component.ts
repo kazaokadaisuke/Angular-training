@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SongsComponent } from './songs.component';
+import { SongsComponent } from './Songs/songs.component';
 
 //app.component.tsに部品として差し込むコンポーネントを定義してある。
 
@@ -11,12 +11,11 @@ import { SongsComponent } from './songs.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 
-export class AppComponent {　
-  title: string = 'Angular-training';　
+export class AppComponent {
+  title: string = 'Angular-training';
   company: string = 'MonstarLab';
   num: number = 150;
-
-  constructor(private SongsComponent: SongsComponent) {}
 }

@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MusicDetailComponent } from './music-detail.component';
-import { SampleComponent } from './sample/sample/sample.component'
-import { SongsComponent } from './songs.component';
-import { SongsService } from './songs.service';
+import { MusicDetailComponent } from './Songs/music-detail.component';
+import { SongsComponent } from './Songs/songs.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //app.module.tsにアプリケーションの設定が書かれている。
 //コンポーネントを実際のアプリケーションにまとめる。
@@ -16,15 +16,16 @@ import { SongsService } from './songs.service';
   declarations: [
     AppComponent, //AppComponentを使いますという宣言
     MusicDetailComponent,
-    SampleComponent,
     SongsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule, //ブラウザで動かすためのモジュールをインポート
     AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
-  providers: [ SongsService ],
   bootstrap: [ AppComponent ] //AppModuleが立ち上がった時にAppComponentを実行する
 })
 export class AppModule { } //クラスは作られただけでは実行されたにため、main.tsの11行目の記述によって実行されている。

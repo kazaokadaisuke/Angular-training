@@ -1,0 +1,10 @@
+<h2>Dashboard</h2>
+<h3>Top Music</h3>
+<div class="top-music">
+  <!-- routerLinkで指定したら、app.moduleに -->
+  <a *ngFor="let song of songs" [routerLink]="['/detail',song.id]" class="top-music-list">
+    <div class="module-songs">
+      <h4>・{{ song.country }} : {{ song.genre }}</h4>
+    </div>
+  </a>
+</div>
