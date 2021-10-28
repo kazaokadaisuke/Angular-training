@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'
 import { Music } from './music';
 import { SongsService } from './songs.service';
+import { MusicDetailComponent } from './music-detail.component'
 
 @Component({
   selector: 'mysongs',
@@ -16,6 +17,15 @@ export class SongsComponent implements OnInit{
   // title: string = 'Angular-training';
   // company: string = 'MonstarLab';
   // num: number = 150;
+
+  //ViewChildを使って他のコンポーネントの中の内容を使えるようにする。
+  @ViewChild(MusicDetailComponent)
+  public musicDetailComponent?: MusicDetailComponent;
+
+  // MusicDetailComponent定義された関数を使う
+  goBack() {
+    this.musicDetailComponent?.goBack()
+  }
 
   songs?: Music[];
   selectSong?: Music;

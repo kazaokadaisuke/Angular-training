@@ -3,7 +3,7 @@
     <!--リスト表示するためにディレクティブ ngFor を加える-->
     <!-- プロパティsongsから一件一件要素を取り出してli表示される -->
     <!-- クラスを動的に設定するクラスバインディング。=の後に条件式を書く-->
-    <h2>Music List</h2>
+    <h2 (click)="musicDetailComponent?.goBack()">Music List</h2>
 
     <li *ngFor="let song of songs"
     [class.selected]="song === selectSong"
@@ -15,14 +15,15 @@
     </li>
   </ul>
 
+  <music-detail></music-detail>
+
   <h2>選択されたMusic</h2>
-  <!-- <div *ngif="selectSong"> -->
-  <div>
+  <div *ngIf="selectSong">
     <h2>
       Music : {{selectSong?.genre}}
     </h2>
     <button (click)="gotoDetail()">詳細を見る</button>
   </div>
-  
+
   <!-- <music-detail [song]="selectSong"></music-detail> -->
-  <router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->

@@ -12,24 +12,28 @@ import { SongsService } from './songs.service';
 })
 
 export class MusicDetailComponent implements OnInit {
-  song: Music | undefined;
+  private _song: Music | undefined;
+  get song(): Music | undefined {
+    return this._song;
+  }
 
    // インポートしたオブジェクトをクラスの中のコンストラクターで受け取る。
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private SongsService: SongsService,
+    private songsService: SongsService,
   ) {};
 
   goBack(): void {
     //Locationのプロパティに対しバックのメソッドを呼び出して、履歴をもどる動作をしている。
+    this.console();
     this.location.back();
   }
 
   ngOnInit(): void {
     this.route.params
-    .pipe(switchMap((params: Params) => this.SongsService.getSong(+params['id'])))
-    .subscribe((song: Music | undefined) => this.song = song);
+    .pipe(switchMap((params: Params) => this.songsService.getSong(+params['id'])))
+    .subscribe((song: Music | undefined) => this._song = song);
 
     // 上を省略しないで書くと下のようになる。
     // let params = this.route.params;
@@ -37,5 +41,9 @@ export class MusicDetailComponent implements OnInit {
     //    switchMap((params: Params) => this.SongsService.getSong(+params['id']))
     //   );
     // song.subscribe((song: Music | undefined) => this.song = song)
+  }
+
+  private console(){
+    console.log("hello")
   }
 }
