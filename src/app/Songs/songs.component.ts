@@ -42,7 +42,7 @@ export class SongsComponent implements OnInit{
 
   getSongs(): void {
     this.songsService.getSongs()
-    .then((songs: Music[]) => {this.songs = songs});
+    .then((songs: Music[] | undefined) => {this.songs = songs});
   }
 
   ngOnInit(): void {

@@ -12,7 +12,7 @@ import { SongsService } from './songs.service';
 })
 
 export class MusicDetailComponent implements OnInit {
-  private _song: Music | undefined;
+  private _song: Music | undefined ;
   get song(): Music | undefined {
     return this._song;
   }
@@ -28,6 +28,11 @@ export class MusicDetailComponent implements OnInit {
     //Locationのプロパティに対しバックのメソッドを呼び出して、履歴をもどる動作をしている。
     this.console();
     this.location.back();
+  }
+
+  save(): void {
+    this.songsService.update(this._song)
+    .then(() => this.goBack());
   }
 
   ngOnInit(): void {

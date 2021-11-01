@@ -1,6 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api'; //webサービスをメモリで使うためのモジュール
 import { Music } from './music';
 
+// モジュールはクラスを定義する必要がある。
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let songs: Music[] = [
