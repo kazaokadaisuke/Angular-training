@@ -31,6 +31,7 @@ export class MusicDetailComponent implements OnInit {
   }
 
   save(): void {
+    if(!this._song) {return;}
     this.songsService.update(this._song)
     .then(() => this.goBack());
   }

@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'; //アプリケーションをブラウザで動かすためのモジュール
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+import { InMemoryDataService } from './Songs/in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MusicDetailComponent } from './Songs/music-detail.component';
@@ -24,7 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   bootstrap: [ AppComponent ] //AppModuleが立ち上がった時にAppComponentを実行する
 })

@@ -18,4 +18,8 @@ export class AppComponent {
   title: string = 'Angular-training';
   company: string = 'MonstarLab';
   num: number = 150;
+
+  getNumber(): number {
+    return 0;
+  }
 }

@@ -26,10 +26,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Angular-training');
   });
 
-  it('should render title', () => {
+  //関数単体でしっかり動くかどうかのテスト
+  it(`shoud get 0`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Angular-training app is running!');
+    const app = fixture.componentInstance;
+    expect(app.getNumber()).toEqual(0);
   });
+  
 });

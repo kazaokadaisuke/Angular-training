@@ -11,16 +11,17 @@ export class SongsService {
   private songsUrl: string = 'api/songs';
   constructor(private http: HttpClient) {}
 
-  getSongs(): Promise<Music[] | undefined> {
+  getSongs(): Promise<Music[]> {
     return this.http.get(this.songsUrl)
     .toPromise()
     .then((response: any) => response.json().data as Music[])
     .catch(this.handleError); //エラーの場合の処理
 
-    // .then((response: HttpResponse) => response.json().data as Music[]);
+    // .then((response: any) => response.json().data as Music[])
+
   }
 
-  getSong(id: number): Promise<Music | undefined> {
+  getSong(id: number): Promise<Music> {
     const url: string = `${this.songsUrl}/${id}`
     return this.http.get(url)
     .toPromise()
