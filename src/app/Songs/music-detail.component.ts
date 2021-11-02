@@ -38,13 +38,13 @@ export class MusicDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-    .pipe(switchMap((params: Params) => this.songsService.getSong(+params['id'])))
+    .pipe(switchMap((params: Params) => this.songsService.getSong(params.id)))
     .subscribe((song: Music | undefined) => this._song = song);
 
     // 上を省略しないで書くと下のようになる。
     // let params = this.route.params;
     // let song = params.pipe(
-    //    switchMap((params: Params) => this.SongsService.getSong(+params['id']))
+    //    switchMap((params: Params) => this.SongsService.getSong(params['id']))
     //   );
     // song.subscribe((song: Music | undefined) => this.song = song)
   }

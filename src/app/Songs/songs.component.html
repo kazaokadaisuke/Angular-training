@@ -5,25 +5,35 @@
     <!-- クラスを動的に設定するクラスバインディング。=の後に条件式を書く-->
     <h2 (click)="musicDetailComponent?.goBack()">Music List</h2>
 
+    <div>
+      <label>Genre:</label><input #genreName />
+      <button (click)="add(genreName.value); genreName.value=''">
+        追加
+      </button>
+      <br>
+      <span> </span>
+      <br>
+    </div>
     <li *ngFor="let song of songs"
     [class.selected]="song === selectSong"
     (click)="onSelect(song)">
+      <span>ID: {{song.id }}</span>
+      <br>
       <span>Genre: {{ song.genre }}</span>
       <br>
       <span>Country: {{ song.country }}</span>
       <br>
+      <button class="delete" (click)="delete(song) ;$event.stopPropagation()">delete</button>
+      <br>
+      <span> </span>
+      <br>
     </li>
   </ul>
 
-  <music-detail></music-detail>
-
   <h2>選択されたMusic</h2>
   <div *ngIf="selectSong">
-    <h2>
-      Music : {{selectSong?.genre}}
-    </h2>
+    <h3>ID : {{selectSong?.id}} </h3>
+    <h3>Genre : {{selectSong?.genre}} </h3>
+    <h3>Country : {{selectSong?.country}} </h3>
     <button (click)="gotoDetail()">詳細を見る</button>
   </div>
-
-  <!-- <music-detail [song]="selectSong"></music-detail> -->
-  <!-- <router-outlet></router-outlet> -->

@@ -28,7 +28,7 @@ export class SongsComponent implements OnInit{
   }
 
   songs?: Music[];
-  selectSong?: Music;
+  selectSong?: Music | null;
 
   constructor(
     private router: Router,
@@ -43,6 +43,28 @@ export class SongsComponent implements OnInit{
   getSongs(): void {
     this.songsService.getSongs()
     .then((songs: Music[] | undefined) => {this.songs = songs});
+  }
+
+  add(genre: string): void {
+    genre = genre.trim();
+    if(!genre) { return }
+
+    this.songsService.create(genre)
+    .then((song: Music) => {
+      this.songs?.push(song);
+      this.selectSong = null;
+    })
+  }
+
+  delete(song: Music): void {
+    this.songsService.delete(song.id)
+    .then(() => {
+      this.songs = this.songs?.filter((__song: Music) => __song !== song);
+      if (this.selectSong === song) {
+        this.selectSong = null;
+      }
+    })
+
   }
 
   ngOnInit(): void {

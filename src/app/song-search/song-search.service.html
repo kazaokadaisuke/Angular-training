@@ -1,0 +1,10 @@
+<div id="search-component">
+  <h4>Genre Search</h4>
+  <input #serachBox id="search-box" (keyup)="search(serachBox.value)" />
+  <div>
+    <div *ngFor="let song of songs | async"
+      (click)="gotoDetail()" class="search-result"
+      {{song.genre}}
+    ></div>
+  </div>
+</div>
