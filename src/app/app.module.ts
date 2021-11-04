@@ -11,6 +11,7 @@ import { MusicDetailComponent } from './Songs/music-detail.component';
 import { SongsComponent } from './Songs/songs.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SongSearchComponent } from './song-search/song-search.component';
 
 //app.module.tsにアプリケーションの設定が書かれている。
 //コンポーネントを実際のアプリケーションにまとめる。
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MusicDetailComponent,
     SongsComponent,
     DashboardComponent,
+    SongSearchComponent,
   ],
   imports: [
     BrowserModule, //ブラウザで動かすためのモジュールをインポート

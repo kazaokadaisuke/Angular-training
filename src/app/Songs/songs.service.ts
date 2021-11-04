@@ -29,9 +29,8 @@ export class SongsService {
 
   create(genre: string): Promise<Music> {
     return this.http
-    .post(this.songsUrl, JSON.stringify({genre: genre}), {headers: this.headers})
+    .post(this.songsUrl, {genre: genre}, {headers: this.headers})
     .toPromise()
-    .then((response: any) => response.json().data)
     .catch(this.handleError);
   }
 
@@ -47,9 +46,8 @@ export class SongsService {
   update(song: Music ): Promise<Music | undefined> {
     const url: string = `${this.songsUrl}/${song.id}`
     return this.http
-    .put(url, JSON.stringify(song), {headers: this.headers})
+    .put(url, song, {headers: this.headers})
     .toPromise()
-    .then(() => song)
     .catch(this.handleError);
   }
 
